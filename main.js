@@ -136,7 +136,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _reset_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reset.css */ \"./src/reset.css\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\r\n\r\n\r\nconsole.log('I am a to do app!');\n\n//# sourceURL=webpack://odin-todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _reset_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reset.css */ \"./src/reset.css\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _project_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project-model */ \"./src/project-model.js\");\n\r\n\r\n\r\n\r\nconsole.log('I am a to do app!');\r\n\r\nconst project1 = new _project_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Project 1');\r\nproject1.addTodo(1);\r\n\r\nconsole.log(project1.name + ': ' + project1.todos);\n\n//# sourceURL=webpack://odin-todo/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/project-model.js":
+/*!******************************!*\
+  !*** ./src/project-model.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Project)\n/* harmony export */ });\nclass Project {\r\n    constructor(name) {\r\n        this._todos = [];\r\n        this.name = name;\r\n    }\r\n\r\n    addTodo(todo) {\r\n        this._todos.push(todo);\r\n    }\r\n\r\n    get todos() {\r\n        return this._todos;\r\n    }\r\n\r\n    get name() {\r\n        return this._name;\r\n    }\r\n\r\n    \r\n    set name(name) {\r\n        this._name = name;\r\n    }\r\n}\n\n//# sourceURL=webpack://odin-todo/./src/project-model.js?");
 
 /***/ })
 
