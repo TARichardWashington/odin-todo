@@ -1,0 +1,19 @@
+{
+  "name": "odin-todo",
+  "version": "1.0.0",
+  "description": "App for managing projects and items that need doing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TARichardWashington/odin-todo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TARichardWashington/odin-todo/issues"
+  },
+  "homepage": "https://github.com/TARichardWashington/odin-todo#readme"
+}
