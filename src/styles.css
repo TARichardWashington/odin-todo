@@ -1,3 +1,33 @@
 body {
     color: red;
+    display: grid;
+    height: 100vh;
+
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+
+    grid-template-areas: 
+    "nav nav nav nav"
+    "left right right right"
+    "left right right right"
+    "left right right right"
+    "left right right right"
+    "left right right right"
+    "left right right right"
+}
+
+nav {
+    grid-area: nav;
+    background-color:hotpink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.left {
+    grid-area: left;
+}
+
+.right {
+ grid-area: right;
 }
