@@ -12,11 +12,11 @@ console.log(project1.name + ': ' + project1.todos);
 
 const todo1 = new todoItem('get this done', false);
 
-console.log(todo1.title + ' is ' + (todo1.status ? 'done': 'not done'));
+console.log(todo1.toString());
 
 todo1.status = true;
 
-console.log(todo1.title + ' is ' + (todo1.status ? 'done': 'not done'));
+console.log(todo1.toString());
 
 project1.addTodo(todo1);
 

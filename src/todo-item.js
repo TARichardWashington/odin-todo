@@ -28,4 +28,7 @@ export default class todo {
         this._status = status;
     }
 
+    toString() {
+        return this.title + ' is ' + (this.status ? 'complete' : 'not complete');
+    }
 }
