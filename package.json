@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx webpack --mode=development",
-    "build-prod": "npx webpack --mode=production"
+    "build-prod": "npx webpack --mode=production",
+    "watch": "npx webpack --watch --mode=development"
   },
   "repository": {
     "type": "git",
