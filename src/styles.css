@@ -1,5 +1,5 @@
 body {
-    color: red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: grid;
     height: 100vh;
 
@@ -17,15 +17,44 @@ body {
 
 nav {
     grid-area: nav;
-    background-color:hotpink;
+    background-color:#1d3557;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: whitesmoke;
+    color: #f1faee;
 }
 
 .left {
     grid-area: left;
+    background-color: #f1faee;
+    color: #1d3557; 
+    padding:1em;   
+}
+
+.left ul li {
+    padding: 0.5em;
+}
+
+.left ul li:before {
+    content: " - ";
+}
+
+.left ul {
+    padding-bottom: 1em;
+}
+
+.left button {
+    background-color:#457b9d;
+    border: 1px solid #457b9d;
+    border-radius: 0 0.5em 0.5em 0 ;
+    padding: 0.5em;
+    color: white;
+}
+
+input {
+    border: 1px solid #457b9d;
+    padding: 0.5em;
+    border-radius: 0.5em 0 0 0.5em;
 }
 
 .right {
