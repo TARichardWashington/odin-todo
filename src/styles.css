@@ -3,7 +3,7 @@ body {
     display: grid;
     height: 100vh;
 
-    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    grid-template: 1fr 1fr 1fr 1fr / 400px 1fr 1fr 1fr;
 
     grid-template-areas: 
     "nav nav nav nav"
@@ -13,6 +13,16 @@ body {
     "left right right right"
     "left right right right"
     "left right right right"
+}
+
+h1 {
+    font-size:larger;
+    padding:em1;
+}
+
+h2 {
+    font-size:large;
+    padding-bottom:0.5em;
 }
 
 nav {

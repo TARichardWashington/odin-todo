@@ -5,23 +5,29 @@ import todoItem from './todo-item';
 
 const doc = document.body;
 
+// Create basic layout
 const nav = document.createElement('nav');
-nav.innerText = 'Todo';
-
 doc.appendChild(nav);
 
 const left = document.createElement('section');
 left.setAttribute('class', 'left');
 
+
+// Create navigation area content
+
+const title = document.createElement('h1'); 
+title.innerText = 'Minimal Todo';
+nav.appendChild(title);
+
+// Create left hand side area content
+
+const projectsTitle = document.createElement('h2'); 
+projectsTitle.textContent = 'Projects';
+left.appendChild(projectsTitle);
+
 const listOfProjects = document.createElement('ul'); 
 
 const projects = [];
-
-projects.forEach(project => {
-    const projectItem = document.createElement('li');
-    projectItem.innerText = project.name;
-    listOfProjects.appendChild(projectItem);
-});
 
 left.appendChild(listOfProjects);
 
@@ -29,13 +35,13 @@ doc.appendChild(left);
 
 const createProjectText = document.createElement('input');
 createProjectText.setAttribute('type', 'text');
-createProjectText.setAttribute('placeholder', 'project name');
+createProjectText.setAttribute('placeholder', 'Name');
 
 const createProjectButton = document.createElement('button');
-createProjectButton.innerText = 'create project';
+createProjectButton.innerText = 'Create';
 
-createProjectButton.addEventListener('click', function() {
-    const project = new projectsModel(createProjectText.value);
+function createProject(name) {
+    const project = new projectsModel(name);
     createProjectText.value = '';
     projects.push(project);
 
@@ -46,12 +52,13 @@ createProjectButton.addEventListener('click', function() {
         projectItem.innerText = project.name;
         listOfProjects.appendChild(projectItem);
     });
-    
-    left.insertBefore(listOfProjects, left.firstChild);
+}
 
-    console.info(projects);
-
+createProjectButton.addEventListener('click', function() {
+    createProject(createProjectText.value);
 });
+
+createProject('Default project');
 
 left.appendChild(createProjectText);
 left.appendChild(createProjectButton);
