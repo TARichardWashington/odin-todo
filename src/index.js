@@ -41,17 +41,19 @@ const createProjectButton = document.createElement('button');
 createProjectButton.innerText = 'Create';
 
 function createProject(name) {
-    const project = new projectsModel(name);
-    createProjectText.value = '';
-    projects.push(project);
+    if(name) {
+        const project = new projectsModel(name);
+        createProjectText.value = '';
+        projects.push(project);
 
-    listOfProjects.innerText = '';
+        listOfProjects.innerText = '';
 
-    projects.forEach(project => {
-        const projectItem = document.createElement('li');
-        projectItem.innerText = project.name;
-        listOfProjects.appendChild(projectItem);
-    });
+        projects.forEach(project => {
+            const projectItem = document.createElement('li');
+            projectItem.innerText = project.name;
+            listOfProjects.appendChild(projectItem);
+        });
+    }
 }
 
 createProjectButton.addEventListener('click', function() {
