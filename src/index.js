@@ -98,7 +98,7 @@ function showProject(project) {
 
         project.todos.forEach(item => {
             const itemLi = document.createElement('li');
-            itemLi.innerText = item.title;
+            itemLi.innerText = item.title + ' | ' + (item.status ? 'done' : 'not done');
             todoList.appendChild(itemLi);
         });
 
@@ -109,9 +109,6 @@ function showProject(project) {
         noItems.innerText = 'There are no todos';
         currentProject.appendChild(noItems);
     }
-
-
-
     right.appendChild(currentProject);
 }
 
