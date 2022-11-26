@@ -110,6 +110,16 @@ function showProject(project) {
         currentProject.appendChild(noItems);
     }
     right.appendChild(currentProject);
+
+    const createTodoText = document.createElement('input');
+    createTodoText.setAttribute('type', 'text');
+    createTodoText.setAttribute('placeholder', 'What do you need to get done');
+
+    const createTodoButton = document.createElement('button');
+    createTodoButton.innerText = 'Create';
+
+    right.appendChild(createTodoText);
+    right.appendChild(createTodoButton);
 }
 
 

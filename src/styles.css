@@ -55,7 +55,7 @@ nav {
     padding-bottom: 1em;
 }
 
-.left button {
+button {
     background-color: #457b9d;
     border: 1px solid #457b9d;
     border-radius: 0 0.5em 0.5em 0;
@@ -78,4 +78,10 @@ input {
     font-weight: bolder;
     padding-bottom: 1em;
     color: var(--red);
+}
+
+.right ul {
+    list-style-type: disc;
+    padding-bottom: 1em;
+    margin-left: 2em;
 }
