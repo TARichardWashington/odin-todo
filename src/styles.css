@@ -5,29 +5,31 @@ body {
 
     grid-template: 1fr 1fr 1fr 1fr / 400px 1fr 1fr 1fr;
 
-    grid-template-areas: 
-    "nav nav nav nav"
-    "left right right right"
-    "left right right right"
-    "left right right right"
-    "left right right right"
-    "left right right right"
-    "left right right right"
+    grid-template-areas:
+        "nav nav nav nav"
+        "left right right right"
+        "left right right right"
+        "left right right right"
+        "left right right right"
+        "left right right right"
+        "left right right right";
+
+    --red: #e63946;
 }
 
 h1 {
-    font-size:larger;
-    padding:em1;
+    font-size: larger;
+    padding: em1;
 }
 
 h2 {
-    font-size:large;
-    padding-bottom:0.5em;
+    font-size: large;
+    padding-bottom: 0.5em;
 }
 
 nav {
     grid-area: nav;
-    background-color:#1d3557;
+    background-color: #1d3557;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,8 +39,8 @@ nav {
 .left {
     grid-area: left;
     background-color: #f1faee;
-    color: #1d3557; 
-    padding:1em;   
+    color: #1d3557;
+    padding: 1em;
 }
 
 .left ul li {
@@ -54,9 +56,9 @@ nav {
 }
 
 .left button {
-    background-color:#457b9d;
+    background-color: #457b9d;
     border: 1px solid #457b9d;
-    border-radius: 0 0.5em 0.5em 0 ;
+    border-radius: 0 0.5em 0.5em 0;
     padding: 0.5em;
     color: white;
 }
@@ -68,5 +70,12 @@ input {
 }
 
 .right {
- grid-area: right;
+    grid-area: right;
+    padding: 1em;
+}
+
+.right h1 {
+    font-weight: bolder;
+    padding-bottom: 1em;
+    color: var(--red);
 }

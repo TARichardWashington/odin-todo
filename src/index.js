@@ -15,17 +15,17 @@ left.setAttribute('class', 'left');
 
 // Create navigation area content
 
-const title = document.createElement('h1'); 
+const title = document.createElement('h1');
 title.innerText = 'Minimal Todo';
 nav.appendChild(title);
 
 // Create left hand side area content
 
-const projectsTitle = document.createElement('h2'); 
+const projectsTitle = document.createElement('h2');
 projectsTitle.textContent = 'Projects';
 left.appendChild(projectsTitle);
 
-const listOfProjects = document.createElement('ul'); 
+const listOfProjects = document.createElement('ul');
 
 const projects = [];
 
@@ -41,7 +41,7 @@ const createProjectButton = document.createElement('button');
 createProjectButton.innerText = 'Create';
 
 function createProject(name) {
-    if(name) {
+    if (name) {
         const project = new projectsModel(name);
         createProjectText.value = '';
         projects.push(project);
@@ -56,16 +56,64 @@ function createProject(name) {
     }
 }
 
-createProjectButton.addEventListener('click', function() {
+createProjectButton.addEventListener('click', function () {
     createProject(createProjectText.value);
 });
 
 createProject('Default project');
 
+const defaultTodoItem = new todoItem('Get me done!');
+projects[0].addTodo(defaultTodoItem);
+
+let selectedProjectIndex = 0;
+
 left.appendChild(createProjectText);
 left.appendChild(createProjectButton);
+
+// Create right hand side section to display the current project
+// and associated todo items
 
 const right = document.createElement('section');
 right.setAttribute('class', 'right');
 
 doc.appendChild(right);
+
+const currentProject = document.createElement('div');
+currentProject.setAttribute('id', 'project');
+
+showProject(projects[selectedProjectIndex]);
+
+function showProject(project) {
+    currentProject.innerText = '';
+
+    const projectTitle = document.createElement('h1');
+    projectTitle.innerText = project.name;
+
+    currentProject.appendChild(projectTitle);
+
+
+
+    if (project.todos.length !== 0) {
+        const todoList = document.createElement('ul');
+
+        project.todos.forEach(item => {
+            const itemLi = document.createElement('li');
+            itemLi.innerText = item.title;
+            todoList.appendChild(itemLi);
+        });
+
+        currentProject.appendChild(todoList);
+    } else {
+
+        const noItems = document.createElement('p');
+        noItems.innerText = 'There are no todos';
+        currentProject.appendChild(noItems);
+    }
+
+
+
+    right.appendChild(currentProject);
+}
+
+
+
