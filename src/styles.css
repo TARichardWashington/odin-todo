@@ -85,3 +85,7 @@ input {
     padding-bottom: 1em;
     margin-left: 2em;
 }
+
+.right ul li {
+    margin-bottom: 0.5em;
+}

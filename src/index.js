@@ -91,8 +91,6 @@ function showProject(project) {
 
     currentProject.appendChild(projectTitle);
 
-
-
     if (project.todos.length !== 0) {
         const todoList = document.createElement('ul');
 
@@ -104,23 +102,31 @@ function showProject(project) {
 
         currentProject.appendChild(todoList);
     } else {
-
         const noItems = document.createElement('p');
         noItems.innerText = 'There are no todos';
         currentProject.appendChild(noItems);
     }
-    right.appendChild(currentProject);
 
-    const createTodoText = document.createElement('input');
-    createTodoText.setAttribute('type', 'text');
-    createTodoText.setAttribute('placeholder', 'What do you need to get done');
-
-    const createTodoButton = document.createElement('button');
-    createTodoButton.innerText = 'Create';
-
-    right.appendChild(createTodoText);
-    right.appendChild(createTodoButton);
 }
+
+right.appendChild(currentProject);
+
+const createTodoText = document.createElement('input');
+createTodoText.setAttribute('type', 'text');
+createTodoText.setAttribute('placeholder', 'What do you need to get done');
+
+const createTodoButton = document.createElement('button');
+createTodoButton.innerText = 'Create';
+
+createTodoButton.addEventListener('click', () => {
+    projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
+    console.log(projects[selectedProjectIndex]);
+    showProject(projects[selectedProjectIndex]);
+});
+
+right.appendChild(createTodoText);
+right.appendChild(createTodoButton);
+
 
 
 
