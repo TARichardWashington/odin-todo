@@ -89,3 +89,7 @@ input {
 .right ul li {
     margin-bottom: 0.5em;
 }
+
+.right #project p {
+    padding-bottom: 1em;
+}

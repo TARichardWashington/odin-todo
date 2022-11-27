@@ -48,9 +48,16 @@ function createProject(name) {
 
         listOfProjects.innerText = '';
 
-        projects.forEach(project => {
+        projects.forEach((project, index) => {
             const projectItem = document.createElement('li');
             projectItem.innerText = project.name;
+            projectItem.setAttribute('data-id', index);
+
+            projectItem.addEventListener('click', (e) => {
+                showProject(project);
+                selectedProjectIndex = projectItem.dataset.id;
+            });
+
             listOfProjects.appendChild(projectItem);
         });
     }
@@ -103,10 +110,9 @@ function showProject(project) {
         currentProject.appendChild(todoList);
     } else {
         const noItems = document.createElement('p');
-        noItems.innerText = 'There are no todos';
+        noItems.innerText = 'There are no todos for this project';
         currentProject.appendChild(noItems);
     }
-
 }
 
 right.appendChild(currentProject);
