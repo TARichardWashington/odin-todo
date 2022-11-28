@@ -16,6 +16,10 @@ export default class Project {
         return this._todos;
     }
 
+    get numberOfTodos() {
+        return this._todos.length;
+    }
+
     get name() {
         return this._name;
     }
