@@ -3,6 +3,54 @@ import './styles.css';
 import projectsModel from './project-model';
 import todoItem from './todo-item';
 
+function createProject(name) {
+    if (name) {
+        const project = new projectsModel(name);
+        createProjectText.value = '';
+        projects.push(project);
+
+        listOfProjects.innerText = '';
+
+        projects.forEach((project, index) => {
+            const projectItem = document.createElement('li');
+            projectItem.innerText = project.name;
+            projectItem.setAttribute('data-id', index);
+
+            projectItem.addEventListener('click', (e) => {
+                showProject(project);
+                selectedProjectIndex = projectItem.dataset.id;
+            });
+
+            listOfProjects.appendChild(projectItem);
+        });
+    }
+}
+
+function showProject(project) {
+    currentProject.innerText = '';
+
+    const projectTitle = document.createElement('h1');
+    projectTitle.innerText = project.name;
+
+    currentProject.appendChild(projectTitle);
+
+    if (project.todos.length !== 0) {
+        const todoList = document.createElement('ul');
+
+        project.todos.forEach(item => {
+            const itemLi = document.createElement('li');
+            itemLi.innerText = item.title + ' | ' + (item.status ? 'done' : 'not done');
+            todoList.appendChild(itemLi);
+        });
+
+        currentProject.appendChild(todoList);
+    } else {
+        const noItems = document.createElement('p');
+        noItems.innerText = 'There are no todos for this project';
+        currentProject.appendChild(noItems);
+    }
+}
+
 const doc = document.body;
 
 // Create basic layout
@@ -40,28 +88,7 @@ createProjectText.setAttribute('placeholder', 'Name');
 const createProjectButton = document.createElement('button');
 createProjectButton.innerText = 'Create';
 
-function createProject(name) {
-    if (name) {
-        const project = new projectsModel(name);
-        createProjectText.value = '';
-        projects.push(project);
 
-        listOfProjects.innerText = '';
-
-        projects.forEach((project, index) => {
-            const projectItem = document.createElement('li');
-            projectItem.innerText = project.name;
-            projectItem.setAttribute('data-id', index);
-
-            projectItem.addEventListener('click', (e) => {
-                showProject(project);
-                selectedProjectIndex = projectItem.dataset.id;
-            });
-
-            listOfProjects.appendChild(projectItem);
-        });
-    }
-}
 
 createProjectButton.addEventListener('click', function () {
     createProject(createProjectText.value);
@@ -90,30 +117,7 @@ currentProject.setAttribute('id', 'project');
 
 showProject(projects[selectedProjectIndex]);
 
-function showProject(project) {
-    currentProject.innerText = '';
 
-    const projectTitle = document.createElement('h1');
-    projectTitle.innerText = project.name;
-
-    currentProject.appendChild(projectTitle);
-
-    if (project.todos.length !== 0) {
-        const todoList = document.createElement('ul');
-
-        project.todos.forEach(item => {
-            const itemLi = document.createElement('li');
-            itemLi.innerText = item.title + ' | ' + (item.status ? 'done' : 'not done');
-            todoList.appendChild(itemLi);
-        });
-
-        currentProject.appendChild(todoList);
-    } else {
-        const noItems = document.createElement('p');
-        noItems.innerText = 'There are no todos for this project';
-        currentProject.appendChild(noItems);
-    }
-}
 
 right.appendChild(currentProject);
 
