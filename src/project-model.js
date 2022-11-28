@@ -8,6 +8,10 @@ export default class Project {
         this._todos.push(todo);
     }
 
+    removeTodo(index) {
+        this.todos.splice(index, 1)
+    }
+
     get todos() {
         return this._todos;
     }
@@ -15,7 +19,7 @@ export default class Project {
     get name() {
         return this._name;
     }
-    
+
     set name(name) {
         this._name = name;
     }

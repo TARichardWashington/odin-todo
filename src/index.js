@@ -50,7 +50,17 @@ function showProject(project) {
                 showProject(project);
             });
 
+            const itemDeleteButton = document.createElement('button');
+            itemDeleteButton.innerText = 'Delete';
+            itemDeleteButton.classList.add('full');
+
+            itemDeleteButton.addEventListener('click', () => {
+                project.removeTodo(index);
+                showProject(project);
+            });
+
             itemLi.appendChild(itemDoneButton);
+            itemLi.appendChild(itemDeleteButton);
 
             todoList.appendChild(itemLi);
         });
@@ -100,8 +110,6 @@ createProjectText.setAttribute('placeholder', 'Name');
 const createProjectButton = document.createElement('button');
 createProjectButton.innerText = 'Create';
 
-
-
 createProjectButton.addEventListener('click', function () {
     createProject(createProjectText.value);
 });
@@ -128,8 +136,6 @@ const currentProject = document.createElement('div');
 currentProject.setAttribute('id', 'project');
 
 showProject(projects[selectedProjectIndex]);
-
-
 
 right.appendChild(currentProject);
 
