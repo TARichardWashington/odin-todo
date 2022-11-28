@@ -147,9 +147,11 @@ const createTodoButton = document.createElement('button');
 createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
-    projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
-    showProject(projects[selectedProjectIndex]);
-    createTodoText.value = '';
+    if (createTodoText.value !== '') {
+        projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
+        showProject(projects[selectedProjectIndex]);
+        createTodoText.value = '';
+    }
 });
 
 right.appendChild(createTodoText);
