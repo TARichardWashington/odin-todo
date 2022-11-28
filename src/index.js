@@ -13,7 +13,7 @@ function createProject(name) {
 
         projects.forEach((project, index) => {
             const projectItem = document.createElement('li');
-            projectItem.innerText = project.name;
+            projectItem.innerText = project.name + '(' + project.todos.length + ')';
             projectItem.setAttribute('data-id', index);
 
             projectItem.addEventListener('click', (e) => {
