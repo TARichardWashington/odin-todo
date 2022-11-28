@@ -130,7 +130,6 @@ createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
     projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
-    console.log(projects[selectedProjectIndex]);
     showProject(projects[selectedProjectIndex]);
 });
 
