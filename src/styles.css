@@ -86,13 +86,17 @@ input {
 }
 
 .right ul {
-    list-style-type: disc;
-    padding-bottom: 1em;
-    margin-left: 2em;
+    list-style-type: none;
+    padding-bottom: 0.5em;
+    margin-left: 1em;
 }
 
 .right ul li {
     margin-bottom: 0.5em;
+}
+
+.right ul li:before {
+    content: " - ";
 }
 
 .right #project p {
