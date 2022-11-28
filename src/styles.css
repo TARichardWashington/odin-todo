@@ -63,6 +63,11 @@ button {
     color: white;
 }
 
+button.full {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    margin-left: 1em;
+}
+
 input {
     border: 1px solid #457b9d;
     padding: 0.5em;

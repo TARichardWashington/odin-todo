@@ -37,9 +37,21 @@ function showProject(project) {
     if (project.todos.length !== 0) {
         const todoList = document.createElement('ul');
 
-        project.todos.forEach(item => {
+        project.todos.forEach((item, index) => {
             const itemLi = document.createElement('li');
-            itemLi.innerText = item.title + ' | ' + (item.status ? 'done' : 'not done');
+            itemLi.innerText = item.title;
+
+            const itemDoneButton = document.createElement('button');
+            itemDoneButton.innerText = (item.status ? 'Mark not done' : 'Mark done');
+            itemDoneButton.classList.add('full');
+
+            itemDoneButton.addEventListener('click', () => {
+                project.todos[index].status ? project.todos[index].status = false : project.todos[index].status = true;
+                showProject(project);
+            });
+
+            itemLi.appendChild(itemDoneButton);
+
             todoList.appendChild(itemLi);
         });
 
@@ -131,6 +143,7 @@ createTodoButton.innerText = 'Create';
 createTodoButton.addEventListener('click', () => {
     projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
     showProject(projects[selectedProjectIndex]);
+    createTodoText.value = '';
 });
 
 right.appendChild(createTodoText);

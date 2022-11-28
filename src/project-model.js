@@ -15,7 +15,6 @@ export default class Project {
     get name() {
         return this._name;
     }
-
     
     set name(name) {
         this._name = name;
