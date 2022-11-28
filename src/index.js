@@ -29,7 +29,7 @@ function createProject(name) {
 function showProject(project) {
     currentProject.innerText = '';
 
-    const projectTitle = document.createElement('h1');
+    const projectTitle = document.createElement('h2');
     projectTitle.innerText = project.name;
 
     currentProject.appendChild(projectTitle);

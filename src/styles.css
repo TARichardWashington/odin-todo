@@ -1,3 +1,11 @@
+:root {
+    --red: #e63946;
+    --dark_blue: #1d3557;
+    --light_blue: #457b9d;
+    --dark_green: #a8dadc;
+    --light_green: #f1faee;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: grid;
@@ -13,23 +21,18 @@ body {
         "left right right right"
         "left right right right"
         "left right right right";
-
-    --red: #e63946;
-}
-
-h1 {
-    font-size: larger;
-    padding: em1;
 }
 
 h2 {
     font-size: large;
-    padding-bottom: 0.5em;
+    padding: 0.5em;
+    padding-left: 0;
+    color: var(--red);
 }
 
 nav {
     grid-area: nav;
-    background-color: #1d3557;
+    background-color: var(--dark_blue);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +42,7 @@ nav {
 .left {
     grid-area: left;
     background-color: #f1faee;
-    color: #1d3557;
+    color: var(--dark_blue);
     padding: 1em;
 }
 
@@ -56,8 +59,8 @@ nav {
 }
 
 button {
-    background-color: #457b9d;
-    border: 1px solid #457b9d;
+    background-color: var(--dark_blue);
+    border: 1px solid var(--dark_blue);
     border-radius: 0 0.5em 0.5em 0;
     padding: 0.5em;
     color: white;
