@@ -24,6 +24,10 @@ function createProject(name) {
             listOfProjects.appendChild(projectItem);
         });
     }
+
+    projectsJson = JSON.stringify(projects);
+    localStorage.setItem('projects', projectsJson);
+    console.log(projects);
 }
 
 function showProject(project) {
@@ -82,7 +86,6 @@ doc.appendChild(nav);
 const left = document.createElement('section');
 left.setAttribute('class', 'left');
 
-
 // Create navigation area content
 
 const title = document.createElement('h1');
@@ -96,8 +99,6 @@ projectsTitle.textContent = 'Projects';
 left.appendChild(projectsTitle);
 
 const listOfProjects = document.createElement('ul');
-
-const projects = [];
 
 left.appendChild(listOfProjects);
 
@@ -114,10 +115,28 @@ createProjectButton.addEventListener('click', function () {
     createProject(createProjectText.value);
 });
 
-createProject('Default project');
+var projects;
 
-const defaultTodoItem = new todoItem('Get me done!');
-projects[0].addTodo(defaultTodoItem);
+if (localStorage.getItem('projects')) {
+    var projectsObjects = JSON.parse(localStorage.getItem('projects'));
+
+    projects = [];
+
+    projectsObjects.forEach(project => {
+        createProject(project._name);
+    });
+} else {
+    projects = [];
+}
+
+var projectsJson = JSON.stringify(projects);
+localStorage.setItem('projects', projectsJson);
+
+if (projects.length === 0) {
+    createProject('Default project');
+    const defaultTodoItem = new todoItem('Get me done!');
+    projects[0].addTodo(defaultTodoItem);
+}
 
 let selectedProjectIndex = 0;
 
