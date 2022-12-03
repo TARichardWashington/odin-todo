@@ -24,8 +24,7 @@ function createProject(name) {
             listOfProjects.appendChild(projectItem);
         });
 
-        projectsJson = JSON.stringify(projects);
-        localStorage.setItem('projects', projectsJson);
+        storeProjects();
 
         // return index of this new project in the projects collection
 
@@ -67,8 +66,7 @@ function showProject(project) {
                 project.removeTodo(index);
                 showProject(project);
 
-                var projectsJson = JSON.stringify(projects);
-                localStorage.setItem('projects', projectsJson);
+                storeProjects();
             });
 
             itemLi.appendChild(itemDoneButton);
@@ -83,6 +81,11 @@ function showProject(project) {
         noItems.innerText = 'There are no todos for this project';
         currentProject.appendChild(noItems);
     }
+}
+
+function storeProjects() {
+    var projectsJson = JSON.stringify(projects);
+    localStorage.setItem('projects', projectsJson);
 }
 
 const doc = document.body;
@@ -145,8 +148,7 @@ if (localStorage.getItem('projects')) {
     projects = [];
 }
 
-var projectsJson = JSON.stringify(projects);
-localStorage.setItem('projects', projectsJson);
+storeProjects();
 
 if (projects.length === 0) {
     createProject('Default project');
@@ -187,8 +189,7 @@ createTodoButton.addEventListener('click', () => {
         showProject(projects[selectedProjectIndex]);
         createTodoText.value = '';
 
-        projectsJson = JSON.stringify(projects);
-        localStorage.setItem('projects', projectsJson);
+        storeProjects();
     }
 });
 
