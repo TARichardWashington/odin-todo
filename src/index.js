@@ -23,11 +23,16 @@ function createProject(name) {
 
             listOfProjects.appendChild(projectItem);
         });
+
+        projectsJson = JSON.stringify(projects);
+        localStorage.setItem('projects', projectsJson);
+
+        // return index of this new project in the projects collection
+
+        return projects.length - 1;
     }
 
-    projectsJson = JSON.stringify(projects);
-    localStorage.setItem('projects', projectsJson);
-    console.log(projects);
+    return false;
 }
 
 function showProject(project) {
@@ -122,8 +127,16 @@ if (localStorage.getItem('projects')) {
 
     projects = [];
 
+    console.log(projectsObjects);
+
     projectsObjects.forEach(project => {
-        createProject(project._name);
+        let projectsIndex = createProject(project._name);
+        console.log(projectsIndex);
+        project._todos.forEach(storedTodo => {
+            var todo = new todoItem(storedTodo._title, storedTodo._status);
+
+            projects[projectsIndex].addTodo(todo);
+        });
     });
 } else {
     projects = [];
@@ -170,6 +183,9 @@ createTodoButton.addEventListener('click', () => {
         projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
         showProject(projects[selectedProjectIndex]);
         createTodoText.value = '';
+
+        projectsJson = JSON.stringify(projects);
+        localStorage.setItem('projects', projectsJson);
     }
 });
 
