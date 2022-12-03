@@ -56,6 +56,9 @@ function showProject(project) {
             itemDoneButton.addEventListener('click', () => {
                 project.todos[index].status ? project.todos[index].status = false : project.todos[index].status = true;
                 showProject(project);
+                storeProjects();
+
+
             });
 
             const itemDeleteButton = document.createElement('button');
@@ -133,11 +136,9 @@ if (localStorage.getItem('projects')) {
 
     projects = [];
 
-    console.log(projectsObjects);
-
     projectsObjects.forEach(project => {
         let projectsIndex = createProject(project._name);
-        console.log(projectsIndex);
+
         project._todos.forEach(storedTodo => {
             var todo = new todoItem(storedTodo._title, storedTodo._status);
 
