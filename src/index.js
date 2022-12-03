@@ -66,6 +66,9 @@ function showProject(project) {
             itemDeleteButton.addEventListener('click', () => {
                 project.removeTodo(index);
                 showProject(project);
+
+                var projectsJson = JSON.stringify(projects);
+                localStorage.setItem('projects', projectsJson);
             });
 
             itemLi.appendChild(itemDoneButton);
