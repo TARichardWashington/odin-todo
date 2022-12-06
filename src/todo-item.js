@@ -1,34 +1,34 @@
 export default class todo {
-    constructor(title, status) {
-        this._title = title;
-        this._status = status;
-    }
+  constructor(title, status) {
+    this._title = title;
+    this._status = status;
+  }
 
-    get title() {
-        return this._title;
-    }
+  get title() {
+    return this._title;
+  }
 
-    set title(title) {
-        this._title = title;
-    }
+  set title(title) {
+    this._title = title;
+  }
 
-    toggleStatus() {
-        if(this._status === true) {
-            this._status = false;
-        } else {
-            this._status = true;
-        }
+  toggleStatus() {
+    if (this._status === true) {
+      this._status = false;
+    } else {
+      this._status = true;
     }
+  }
 
-    get status() {
-        return this._status;
-    }
+  get status() {
+    return this._status;
+  }
 
-    set status(status) {
-        this._status = status;
-    }
+  set status(status) {
+    this._status = status;
+  }
 
-    toString() {
-        return this.title + ' is ' + (this.status ? 'complete' : 'not complete');
-    }
+  toString() {
+    return `${this.title}  is  ${(this.status ? 'complete' : 'not complete')}`;
+  }
 }

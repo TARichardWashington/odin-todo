@@ -1,94 +1,104 @@
 import './reset.css';
 import './styles.css';
-import projectsModel from './project-model';
-import todoItem from './todo-item';
+import ProjectsModel from './project-model';
+import TodoItem from './todo-item';
 
-function createProject(name) {
-    if (name) {
-        const project = new projectsModel(name);
-        createProjectText.value = '';
-        projects.push(project);
+let projects;
 
-        listOfProjects.innerText = '';
+const createProjectText = document.createElement('input');
+createProjectText.setAttribute('type', 'text');
+createProjectText.setAttribute('placeholder', 'Name');
 
-        projects.forEach((project, index) => {
-            const projectItem = document.createElement('li');
-            projectItem.innerText = project.name + '(' + project.numberOfTodos + ')';
-            projectItem.setAttribute('data-id', index);
+const listOfProjects = document.createElement('ul');
 
-            projectItem.addEventListener('click', (e) => {
-                showProject(project);
-                selectedProjectIndex = projectItem.dataset.id;
-            });
+const currentProject = document.createElement('div');
+currentProject.setAttribute('id', 'project');
 
-            listOfProjects.appendChild(projectItem);
-        });
+let selectedProjectIndex = 0;
 
-        storeProjects();
-
-        // return index of this new project in the projects collection
-
-        return projects.length - 1;
-    }
-
-    return false;
+function storeProjects() {
+  const projectsJson = JSON.stringify(projects);
+  localStorage.setItem('projects', projectsJson);
 }
 
 function showProject(project) {
-    currentProject.innerText = '';
+  currentProject.innerText = '';
 
-    const projectTitle = document.createElement('h2');
-    projectTitle.innerText = project.name;
+  const projectTitle = document.createElement('h2');
+  projectTitle.innerText = project.name;
 
-    currentProject.appendChild(projectTitle);
+  currentProject.appendChild(projectTitle);
 
-    if (project.todos.length !== 0) {
-        const todoList = document.createElement('ul');
+  if (project.todos.length !== 0) {
+    const todoList = document.createElement('ul');
 
-        project.todos.forEach((item, index) => {
-            const itemLi = document.createElement('li');
-            itemLi.innerText = item.title;
+    project.todos.forEach((item, index) => {
+      const itemLi = document.createElement('li');
+      itemLi.innerText = item.title;
 
-            const itemDoneButton = document.createElement('button');
-            itemDoneButton.innerText = (item.status ? 'Mark not done' : 'Mark done');
-            itemDoneButton.classList.add('full');
+      const itemDoneButton = document.createElement('button');
+      itemDoneButton.innerText = (item.status ? 'Mark not done' : 'Mark done');
+      itemDoneButton.classList.add('full');
 
-            itemDoneButton.addEventListener('click', () => {
-                project.todos[index].status ? project.todos[index].status = false : project.todos[index].status = true;
-                showProject(project);
-                storeProjects();
+      itemDoneButton.addEventListener('click', () => {
+        project.todos[index].status = !project.todos[index].status;
+        showProject(project);
+        storeProjects();
+      });
 
+      const itemDeleteButton = document.createElement('button');
+      itemDeleteButton.innerText = 'Delete';
+      itemDeleteButton.classList.add('full');
 
-            });
+      itemDeleteButton.addEventListener('click', () => {
+        project.removeTodo(index);
+        showProject(project);
 
-            const itemDeleteButton = document.createElement('button');
-            itemDeleteButton.innerText = 'Delete';
-            itemDeleteButton.classList.add('full');
+        storeProjects();
+      });
 
-            itemDeleteButton.addEventListener('click', () => {
-                project.removeTodo(index);
-                showProject(project);
+      itemLi.appendChild(itemDoneButton);
+      itemLi.appendChild(itemDeleteButton);
 
-                storeProjects();
-            });
+      todoList.appendChild(itemLi);
+    });
 
-            itemLi.appendChild(itemDoneButton);
-            itemLi.appendChild(itemDeleteButton);
-
-            todoList.appendChild(itemLi);
-        });
-
-        currentProject.appendChild(todoList);
-    } else {
-        const noItems = document.createElement('p');
-        noItems.innerText = 'There are no todos for this project';
-        currentProject.appendChild(noItems);
-    }
+    currentProject.appendChild(todoList);
+  } else {
+    const noItems = document.createElement('p');
+    noItems.innerText = 'There are no todos for this project';
+    currentProject.appendChild(noItems);
+  }
 }
 
-function storeProjects() {
-    var projectsJson = JSON.stringify(projects);
-    localStorage.setItem('projects', projectsJson);
+function createProject(name) {
+  if (name) {
+    const newProject = new ProjectsModel(name);
+    createProjectText.value = '';
+    projects.push(newProject);
+
+    listOfProjects.innerText = '';
+
+    projects.forEach((project, index) => {
+      const projectItem = document.createElement('li');
+      projectItem.innerText = `${project.name} ( ${project.numberOfTodos} )`;
+      projectItem.setAttribute('data-id', index);
+
+      projectItem.addEventListener('click', () => {
+        showProject(project);
+        selectedProjectIndex = projectItem.dataset.id;
+      });
+
+      listOfProjects.appendChild(projectItem);
+    });
+
+    storeProjects();
+
+    // return index of this new project in the projects collection
+    return projects.length - 1;
+  }
+
+  return false;
 }
 
 const doc = document.body;
@@ -112,52 +122,42 @@ const projectsTitle = document.createElement('h2');
 projectsTitle.textContent = 'Projects';
 left.appendChild(projectsTitle);
 
-const listOfProjects = document.createElement('ul');
-
 left.appendChild(listOfProjects);
 
 doc.appendChild(left);
 
-const createProjectText = document.createElement('input');
-createProjectText.setAttribute('type', 'text');
-createProjectText.setAttribute('placeholder', 'Name');
-
 const createProjectButton = document.createElement('button');
 createProjectButton.innerText = 'Create';
 
-createProjectButton.addEventListener('click', function () {
-    createProject(createProjectText.value);
+createProjectButton.addEventListener('click', () => {
+  createProject(createProjectText.value);
 });
 
-var projects;
-
 if (localStorage.getItem('projects')) {
-    var projectsObjects = JSON.parse(localStorage.getItem('projects'));
+  const projectsObjects = JSON.parse(localStorage.getItem('projects'));
 
-    projects = [];
+  projects = [];
 
-    projectsObjects.forEach(project => {
-        let projectsIndex = createProject(project._name);
+  projectsObjects.forEach((project) => {
+    const projectsIndex = createProject(project._name);
 
-        project._todos.forEach(storedTodo => {
-            var todo = new todoItem(storedTodo._title, storedTodo._status);
+    project._todos.forEach((storedTodo) => {
+      const todo = new TodoItem(storedTodo._title, storedTodo._status);
 
-            projects[projectsIndex].addTodo(todo);
-        });
+      projects[projectsIndex].addTodo(todo);
     });
+  });
 } else {
-    projects = [];
+  projects = [];
 }
 
 storeProjects();
 
 if (projects.length === 0) {
-    createProject('Default project');
-    const defaultTodoItem = new todoItem('Get me done!');
-    projects[0].addTodo(defaultTodoItem);
+  createProject('Default project');
+  const defaultTodoItem = new TodoItem('Get me done!');
+  projects[0].addTodo(defaultTodoItem);
 }
-
-let selectedProjectIndex = 0;
 
 left.appendChild(createProjectText);
 left.appendChild(createProjectButton);
@@ -169,9 +169,6 @@ const right = document.createElement('section');
 right.setAttribute('class', 'right');
 
 doc.appendChild(right);
-
-const currentProject = document.createElement('div');
-currentProject.setAttribute('id', 'project');
 
 showProject(projects[selectedProjectIndex]);
 
@@ -185,18 +182,14 @@ const createTodoButton = document.createElement('button');
 createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
-    if (createTodoText.value !== '') {
-        projects[selectedProjectIndex].addTodo(new todoItem(createTodoText.value, false));
-        showProject(projects[selectedProjectIndex]);
-        createTodoText.value = '';
+  if (createTodoText.value !== '') {
+    projects[selectedProjectIndex].addTodo(new TodoItem(createTodoText.value, false));
+    showProject(projects[selectedProjectIndex]);
+    createTodoText.value = '';
 
-        storeProjects();
-    }
+    storeProjects();
+  }
 });
 
 right.appendChild(createTodoText);
 right.appendChild(createTodoButton);
-
-
-
-
