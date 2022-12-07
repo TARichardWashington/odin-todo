@@ -1,107 +1,107 @@
 :root {
-    --red: #e63946;
-    --dark_blue: #1d3557;
-    --light_blue: #457b9d;
-    --dark_green: #a8dadc;
-    --light_green: #f1faee;
+  --red: #e63946;
+  --dark_blue: #1d3557;
+  --light_blue: #457b9d;
+  --dark_green: #a8dadc;
+  --light_green: #f1faee;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: grid;
-    height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: grid;
+  height: 100vh;
 
-    grid-template: 1fr 1fr 1fr 1fr / 400px 1fr 1fr 1fr;
+  grid-template: 1fr 1fr 1fr 1fr / 400px 1fr 1fr 1fr;
 
-    grid-template-areas:
-        "nav nav nav nav"
-        "left right right right"
-        "left right right right"
-        "left right right right"
-        "left right right right"
-        "left right right right"
-        "left right right right";
+  grid-template-areas:
+    'nav nav nav nav'
+    'left right right right'
+    'left right right right'
+    'left right right right'
+    'left right right right'
+    'left right right right'
+    'left right right right';
 }
 
 h2 {
-    font-size: large;
-    padding: 0.5em;
-    padding-left: 0;
-    color: var(--red);
+  font-size: large;
+  padding: 0.5em;
+  padding-left: 0;
+  color: var(--red);
 }
 
 nav {
-    grid-area: nav;
-    background-color: var(--dark_blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f1faee;
+  grid-area: nav;
+  background-color: var(--dark_blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f1faee;
 }
 
 .left {
-    grid-area: left;
-    background-color: #f1faee;
-    color: var(--dark_blue);
-    padding: 1em;
+  grid-area: left;
+  background-color: #f1faee;
+  color: var(--dark_blue);
+  padding: 1em;
 }
 
 .left ul li {
-    padding: 0.5em;
+  padding: 0.5em;
 }
 
 .left ul li:before {
-    content: " - ";
+  content: ' - ';
 }
 
 .left ul {
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }
 
 button {
-    background-color: var(--dark_blue);
-    border: 1px solid var(--dark_blue);
-    border-radius: 0 0.5em 0.5em 0;
-    padding: 0.5em;
-    color: white;
+  background-color: var(--dark_blue);
+  border: 1px solid var(--dark_blue);
+  border-radius: 0 0.5em 0.5em 0;
+  padding: 0.5em;
+  color: white;
 }
 
 button.full {
-    border-radius: 0.5em 0.5em 0.5em 0.5em;
-    margin-left: 1em;
+  border-radius: 0.5em 0.5em 0.5em 0.5em;
+  margin-left: 1em;
 }
 
 input {
-    border: 1px solid #457b9d;
-    padding: 0.5em;
-    border-radius: 0.5em 0 0 0.5em;
+  border: 1px solid #457b9d;
+  padding: 0.5em;
+  border-radius: 0.5em 0 0 0.5em;
 }
 
 .right {
-    grid-area: right;
-    padding: 1em;
+  grid-area: right;
+  padding: 1em;
 }
 
 .right h1 {
-    font-weight: bolder;
-    padding-bottom: 1em;
-    color: var(--red);
+  font-weight: bolder;
+  padding-bottom: 1em;
+  color: var(--red);
 }
 
 .right ul {
-    list-style-type: none;
-    padding-bottom: 0.5em;
-    margin-left: 1em;
+  list-style-type: none;
+  padding-bottom: 0.5em;
+  margin-left: 1em;
 }
 
 .right ul li {
-    margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .right ul li:before {
-    content: " - ";
+  content: ' - ';
 }
 
 .right #project p {
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }

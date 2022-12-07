@@ -37,7 +37,7 @@ function showProject(project) {
       itemLi.innerText = item.title;
 
       const itemDoneButton = document.createElement('button');
-      itemDoneButton.innerText = (item.status ? 'Mark not done' : 'Mark done');
+      itemDoneButton.innerText = item.status ? 'Mark not done' : 'Mark done';
       itemDoneButton.classList.add('full');
 
       itemDoneButton.addEventListener('click', () => {
@@ -183,7 +183,10 @@ createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
   if (createTodoText.value !== '') {
-    projects[selectedProjectIndex].addTodo(new TodoItem(createTodoText.value, false));
+    projects[selectedProjectIndex].addTodo(
+      new TodoItem(createTodoText.value, false)
+    );
+
     showProject(projects[selectedProjectIndex]);
     createTodoText.value = '';
 

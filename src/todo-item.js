@@ -29,6 +29,6 @@ export default class todo {
   }
 
   toString() {
-    return `${this.title}  is  ${(this.status ? 'complete' : 'not complete')}`;
+    return `${this.title}  is  ${this.status ? 'complete' : 'not complete'}`;
   }
 }
