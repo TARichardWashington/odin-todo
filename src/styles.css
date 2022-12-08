@@ -15,12 +15,12 @@ body {
 
   grid-template-areas:
     'nav nav nav nav'
-    'left right right right'
-    'left right right right'
-    'left right right right'
-    'left right right right'
-    'left right right right'
-    'left right right right';
+    'left right right current'
+    'left right right current'
+    'left right right current'
+    'left right right current'
+    'left right right current'
+    'left right right current';
 }
 
 h2 {
@@ -104,4 +104,9 @@ input {
 
 .right #project p {
   padding-bottom: 1em;
+}
+
+.current {
+  grid-area: current;
+  padding: 1em;
 }

@@ -196,3 +196,8 @@ createTodoButton.addEventListener('click', () => {
 
 right.appendChild(createTodoText);
 right.appendChild(createTodoButton);
+
+const current = document.createElement('section');
+current.setAttribute('class', 'current');
+
+doc.appendChild(current);
