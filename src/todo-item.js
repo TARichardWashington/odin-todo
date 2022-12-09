@@ -1,7 +1,10 @@
 export default class todo {
-  constructor(title, status) {
+  constructor(title, status, description = 'DO ME', dueDate = null, priority = 1) {
     this._title = title;
     this._status = status;
+    this._description = description;
+    this._dueDate = dueDate;
+    this._priority = priority;
   }
 
   get title() {
@@ -10,6 +13,30 @@ export default class todo {
 
   set title(title) {
     this._title = title;
+  }
+
+  get description() {
+    return this._description;
+  }
+
+  set description(description) {
+    this._description = description;
+  }
+
+  get dueDate() {
+    return this._dueDate;
+  }
+
+  set dueDate(dueDate) {
+    this._dueDate = dueDate;
+  }
+
+  get priority() {
+    return this._priority;
+  }
+
+  set priority(priority) {
+    this._priority = priority;
   }
 
   toggleStatus() {
