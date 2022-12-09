@@ -46,6 +46,19 @@ function showProject(project) {
         storeProjects();
       });
 
+      const itemShowButton = document.createElement('button');
+      itemShowButton.innerText = 'Show';
+      itemShowButton.classList.add('full');
+
+      itemShowButton.addEventListener('click', () => {
+        console.log('Show clicked');
+        const current = document.querySelector('.current');
+        current.innerText = '';
+        const currentTitle = document.createElement('h1');
+        currentTitle.innerText = item.title;
+        current.appendChild(currentTitle);
+      });
+
       const itemDeleteButton = document.createElement('button');
       itemDeleteButton.innerText = 'Delete';
       itemDeleteButton.classList.add('full');
@@ -59,6 +72,7 @@ function showProject(project) {
 
       itemLi.appendChild(itemDoneButton);
       itemLi.appendChild(itemDeleteButton);
+      itemLi.appendChild(itemShowButton);
 
       todoList.appendChild(itemLi);
     });
