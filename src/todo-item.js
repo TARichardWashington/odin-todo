@@ -23,6 +23,14 @@ export default class todo {
     this._description = description;
   }
 
+  get priority() {
+    return this._priority;
+  }
+
+  set priority(priority) {
+    this._priority = priority;
+  }
+
   get dueDate() {
     return this._dueDate;
   }

@@ -54,9 +54,22 @@ function showProject(project) {
         console.log('Show clicked');
         const current = document.querySelector('.current');
         current.innerText = '';
+
         const currentTitle = document.createElement('h1');
         currentTitle.innerText = item.title;
         current.appendChild(currentTitle);
+
+        const currentDescription = document.createElement('p');
+        currentDescription.innerText = item.description;
+        current.appendChild(currentDescription);
+
+        const currentPriority = document.createElement('p');
+        currentPriority.innerText = `Priority: ${item.priority}`;
+        current.appendChild(currentPriority);
+
+        const currentDueDate = document.createElement('p');
+        currentDueDate.innerText = `Due date: ${item.dueDate}`;
+        current.appendChild(currentDueDate);
       });
 
       const itemDeleteButton = document.createElement('button');
