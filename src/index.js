@@ -68,7 +68,7 @@ function showProject(project) {
         current.appendChild(currentPriority);
 
         const currentDueDate = document.createElement('p');
-        currentDueDate.innerText = `Due date: ${item.dueDate}`;
+        currentDueDate.innerText = `Due date: ${(item.dueDate ?? 'Not set')}`;
         current.appendChild(currentDueDate);
       });
 
