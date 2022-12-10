@@ -51,7 +51,6 @@ function showProject(project) {
       itemShowButton.classList.add('full');
 
       itemShowButton.addEventListener('click', () => {
-        console.log('Show clicked');
         const current = document.querySelector('.current');
         current.innerText = '';
 

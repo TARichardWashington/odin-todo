@@ -39,14 +39,6 @@ export default class todo {
     this._dueDate = dueDate;
   }
 
-  get priority() {
-    return this._priority;
-  }
-
-  set priority(priority) {
-    this._priority = priority;
-  }
-
   toggleStatus() {
     if (this._status === true) {
       this._status = false;
