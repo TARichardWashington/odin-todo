@@ -77,6 +77,10 @@ input {
   border-radius: 0.5em 0 0 0.5em;
 }
 
+input.no-radius {
+  border-radius: 0;
+}
+
 .right {
   grid-area: right;
   padding: 1em;

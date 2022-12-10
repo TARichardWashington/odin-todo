@@ -201,27 +201,33 @@ showProject(projects[selectedProjectIndex]);
 
 right.appendChild(currentProject);
 
-const createTodoText = document.createElement('input');
-createTodoText.setAttribute('type', 'text');
-createTodoText.setAttribute('placeholder', 'What do you need to get done');
+const createTodoTitle = document.createElement('input');
+createTodoTitle.setAttribute('type', 'text');
+createTodoTitle.setAttribute('placeholder', 'What do you need to get done');
+
+const createTodoDueDate = document.createElement('input');
+createTodoDueDate.setAttribute('type', 'text');
+createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
+createTodoDueDate.setAttribute('class', 'no-radius');
 
 const createTodoButton = document.createElement('button');
 createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
-  if (createTodoText.value !== '') {
-    projects[selectedProjectIndex].addTodo(
-      new TodoItem(createTodoText.value, false)
-    );
+  if (createTodoTitle.value !== '') {
+    const newToDo = new TodoItem(createTodoTitle.value, false);
+
+    projects[selectedProjectIndex].addTodo(newToDo);
 
     showProject(projects[selectedProjectIndex]);
-    createTodoText.value = '';
+    createTodoTitle.value = '';
 
     storeProjects();
   }
 });
 
-right.appendChild(createTodoText);
+right.appendChild(createTodoTitle);
+right.appendChild(createTodoDueDate);
 right.appendChild(createTodoButton);
 
 const current = document.createElement('section');
