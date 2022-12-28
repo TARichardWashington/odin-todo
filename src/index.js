@@ -209,17 +209,36 @@ createTodoDueDate.setAttribute('type', 'text');
 createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
 createTodoDueDate.setAttribute('class', 'no-radius');
 
+const createTodoDescription = document.createElement('input');
+createTodoDescription.setAttribute('type', 'text');
+createTodoDescription.setAttribute('placeholder', 'More info');
+createTodoDescription.setAttribute('class', 'no-radius');
+
+const createTodoPriority = document.createElement('input');
+createTodoPriority.setAttribute('type', 'text');
+createTodoPriority.setAttribute('placeholder', 'Priority (1-10)');
+createTodoPriority.setAttribute('class', 'no-radius');
+
 const createTodoButton = document.createElement('button');
 createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
   if (createTodoTitle.value !== '') {
-    const newToDo = new TodoItem(createTodoTitle.value, false);
+    const newToDo = new TodoItem(
+      createTodoTitle.value,
+      false,
+      createTodoDescription.value,
+      createTodoDueDate.value,
+      createTodoPriority.value,
+    );
 
     projects[selectedProjectIndex].addTodo(newToDo);
 
     showProject(projects[selectedProjectIndex]);
     createTodoTitle.value = '';
+    createTodoDescription.value = '';
+    createTodoDueDate.value = '';
+    createTodoPriority.value = '';
 
     storeProjects();
   }
@@ -227,6 +246,8 @@ createTodoButton.addEventListener('click', () => {
 
 right.appendChild(createTodoTitle);
 right.appendChild(createTodoDueDate);
+right.appendChild(createTodoDescription);
+right.appendChild(createTodoPriority);
 right.appendChild(createTodoButton);
 
 const current = document.createElement('section');

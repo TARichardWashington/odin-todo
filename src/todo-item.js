@@ -1,5 +1,5 @@
 export default class todo {
-  constructor(title, status, description = 'DO ME', dueDate = null, priority = 1) {
+  constructor(title, status, description, dueDate, priority) {
     this._title = title;
     this._status = status;
     this._description = description;
