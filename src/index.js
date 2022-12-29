@@ -18,7 +18,6 @@ let selectedProjectIndex = 0;
 
 function storeProjects() {
   const projectsJson = JSON.stringify(projects);
-  console.log(projectsJson);
   localStorage.setItem('projects', projectsJson);
 }
 
@@ -239,8 +238,6 @@ createTodoButton.addEventListener('click', () => {
     );
 
     projects[selectedProjectIndex].addTodo(newToDo);
-
-    console.log(projects);
 
     showProject(projects[selectedProjectIndex]);
     createTodoTitle.value = '';
