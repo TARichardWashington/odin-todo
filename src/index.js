@@ -218,8 +218,7 @@ const createTodoDueDate = document.createElement('input');
 createTodoDueDate.setAttribute('type', 'text');
 createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
 
-const createTodoDescription = document.createElement('input');
-createTodoDescription.setAttribute('type', 'text');
+const createTodoDescription = document.createElement('textarea');
 createTodoDescription.setAttribute('placeholder', 'More info');
 
 const createTodoPriority = document.createElement('input');
