@@ -69,6 +69,24 @@ function showProject(project) {
         const currentDueDate = document.createElement('p');
         currentDueDate.innerText = `Due date: ${(item.dueDate ?? 'Not set')}`;
         current.appendChild(currentDueDate);
+
+        const currentEditButton = document.createElement('button');
+        currentEditButton.innerText = 'Edit';
+        currentEditButton.classList.add('full');
+        currentEditButton.addEventListener('click', () => {
+          const formNameElement = document.getElementById('name');
+          formNameElement.value = item.title;
+
+          const formDescriptionElement = document.getElementById('description');
+          formDescriptionElement.value = item.description;
+
+          const formDueDateElement = document.getElementById('dueDate');
+          formDueDateElement.value = item.priority;
+
+          const formPriorityElement = document.getElementById('priority');
+          formPriorityElement.value = item.dueDate;
+        });
+        current.appendChild(currentEditButton);
       });
 
       const itemDeleteButton = document.createElement('button');
@@ -211,17 +229,21 @@ newTodoFormDiv.classList.add('formArea');
 
 const createTodoTitle = document.createElement('input');
 createTodoTitle.setAttribute('type', 'text');
+createTodoTitle.setAttribute('id', 'name');
 createTodoTitle.setAttribute('placeholder', 'What do you need to get done');
 
 const createTodoDueDate = document.createElement('input');
 createTodoDueDate.setAttribute('type', 'text');
+createTodoDueDate.setAttribute('id', 'dueDate');
 createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
 
 const createTodoDescription = document.createElement('textarea');
 createTodoDescription.setAttribute('placeholder', 'More info');
+createTodoDescription.setAttribute('id', 'description');
 
 const createTodoPriority = document.createElement('input');
 createTodoPriority.setAttribute('type', 'text');
+createTodoPriority.setAttribute('id', 'priority');
 createTodoPriority.setAttribute('placeholder', 'Priority (1-10)');
 
 const createTodoButton = document.createElement('button');
