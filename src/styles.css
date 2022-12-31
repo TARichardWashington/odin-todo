@@ -124,6 +124,16 @@ textarea {
   width: 90%;
 }
 
+.formArea input:valid,
+textarea:valid {
+  border: 2px solid green;
+}
+
+.formArea input:invalid,
+textarea:invalid {
+  border: 2px solid red;
+}
+
 .formArea button {
   border-radius: 0.5em 0.5em 0.5em 0.5em;
 }
