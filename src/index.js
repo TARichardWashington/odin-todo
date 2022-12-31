@@ -230,6 +230,8 @@ right.appendChild(currentProject);
 const newTodoFormDiv = document.createElement('div');
 newTodoFormDiv.classList.add('formArea');
 
+const newTodoForm = document.createElement('form');
+
 const createTodoTitle = document.createElement('input');
 createTodoTitle.setAttribute('type', 'text');
 createTodoTitle.setAttribute('id', 'name');
@@ -284,11 +286,12 @@ createTodoButton.addEventListener('click', () => {
 });
 
 right.appendChild(newTodoFormDiv);
-newTodoFormDiv.appendChild(createTodoTitle);
-newTodoFormDiv.appendChild(createTodoDueDate);
-newTodoFormDiv.appendChild(createTodoDescription);
-newTodoFormDiv.appendChild(createTodoPriority);
-newTodoFormDiv.appendChild(createTodoButton);
+newTodoFormDiv.appendChild(newTodoForm);
+newTodoForm.appendChild(createTodoTitle);
+newTodoForm.appendChild(createTodoDueDate);
+newTodoForm.appendChild(createTodoDescription);
+newTodoForm.appendChild(createTodoPriority);
+newTodoForm.appendChild(createTodoButton);
 
 const current = document.createElement('section');
 current.setAttribute('class', 'current');
