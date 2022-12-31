@@ -233,20 +233,29 @@ newTodoFormDiv.classList.add('formArea');
 const createTodoTitle = document.createElement('input');
 createTodoTitle.setAttribute('type', 'text');
 createTodoTitle.setAttribute('id', 'name');
+createTodoTitle.setAttribute('required', 'required');
+createTodoTitle.setAttribute('minlength', '3');
+createTodoTitle.setAttribute('maxlength', '20');
 createTodoTitle.setAttribute('placeholder', 'What do you need to get done');
 
 const createTodoDueDate = document.createElement('input');
 createTodoDueDate.setAttribute('type', 'text');
 createTodoDueDate.setAttribute('id', 'dueDate');
+createTodoDueDate.setAttribute('required', 'required');
+createTodoDueDate.setAttribute('maxlength', '500');
 createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
 
 const createTodoDescription = document.createElement('textarea');
 createTodoDescription.setAttribute('placeholder', 'More info');
+createTodoDescription.setAttribute('required', 'required');
 createTodoDescription.setAttribute('id', 'description');
 
 const createTodoPriority = document.createElement('input');
-createTodoPriority.setAttribute('type', 'text');
+createTodoPriority.setAttribute('type', 'number');
 createTodoPriority.setAttribute('id', 'priority');
+createTodoPriority.setAttribute('required', 'required');
+createTodoPriority.setAttribute('min', '0');
+createTodoPriority.setAttribute('max', '10');
 createTodoPriority.setAttribute('placeholder', 'Priority (1-10)');
 
 const createTodoButton = document.createElement('button');
