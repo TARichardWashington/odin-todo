@@ -84,10 +84,10 @@ function showProject(project) {
           formDescriptionElement.value = item.description;
 
           const formDueDateElement = document.getElementById('dueDate');
-          formDueDateElement.value = item.priority;
+          formDueDateElement.value = item.dueDate;
 
           const formPriorityElement = document.getElementById('priority');
-          formPriorityElement.value = item.dueDate;
+          formPriorityElement.value = item.priority;
         });
         current.appendChild(currentEditButton);
       });
