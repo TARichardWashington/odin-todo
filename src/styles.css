@@ -132,3 +132,11 @@ textarea {
   grid-area: current;
   padding: 1em;
 }
+
+.current ul li:before {
+  content: ' - ';
+}
+
+.current ul li {
+  margin-bottom: 0.5em;
+}

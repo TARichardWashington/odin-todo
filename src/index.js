@@ -54,21 +54,24 @@ function showProject(project) {
         const current = document.querySelector('.current');
         current.innerText = '';
 
-        const currentTitle = document.createElement('h1');
+        const currentTitle = document.createElement('h2');
         currentTitle.innerText = item.title;
         current.appendChild(currentTitle);
 
-        const currentDescription = document.createElement('p');
+        const currentList = document.createElement('ul');
+        current.appendChild(currentList);
+
+        const currentDescription = document.createElement('li');
         currentDescription.innerText = item.description;
-        current.appendChild(currentDescription);
+        currentList.appendChild(currentDescription);
 
-        const currentPriority = document.createElement('p');
+        const currentPriority = document.createElement('li');
         currentPriority.innerText = `Priority: ${item.priority}`;
-        current.appendChild(currentPriority);
+        currentList.appendChild(currentPriority);
 
-        const currentDueDate = document.createElement('p');
+        const currentDueDate = document.createElement('li');
         currentDueDate.innerText = `Due date: ${(item.dueDate ?? 'Not set')}`;
-        current.appendChild(currentDueDate);
+        currentList.appendChild(currentDueDate);
 
         const currentEditButton = document.createElement('button');
         currentEditButton.innerText = 'Edit';
