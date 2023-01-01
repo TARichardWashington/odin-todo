@@ -240,18 +240,66 @@ createTodoTitle.setAttribute('minlength', '3');
 createTodoTitle.setAttribute('maxlength', '20');
 createTodoTitle.setAttribute('placeholder', 'What do you need to get done');
 
+createTodoTitle.addEventListener('input', (e) => {
+  const input = e.target;
+  const validityState = input.validity;
+
+  if (validityState.valueMissing) {
+    input.setCustomValidity('Please set a sensible name');
+  } else if (validityState.tooShort) {
+    input.setCustomValidity('Please enter at least three characters');
+  } else {
+    input.setCustomValidity('');
+  }
+
+  input.reportValidity();
+});
+
 const createTodoDueDate = document.createElement('input');
 createTodoDueDate.setAttribute('type', 'text');
 createTodoDueDate.setAttribute('id', 'dueDate');
 createTodoDueDate.setAttribute('required', 'required');
-createTodoDueDate.setAttribute('maxlength', '500');
+createTodoDueDate.setAttribute('maxlength', '10');
 createTodoDueDate.setAttribute('pattern', '([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)[0-9]{4}');
 createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
+
+createTodoDueDate.addEventListener('input', (e) => {
+  const input = e.target;
+  const validityState = input.validity;
+
+  if (validityState.valueMissing) {
+    input.setCustomValidity('Please set a date when this needs to be complete by');
+  } else if (validityState.patternMismatch) {
+    input.setCustomValidity('Please use the dd/mm/yyyy format');
+  } else {
+    input.setCustomValidity('');
+  }
+
+  input.reportValidity();
+});
 
 const createTodoDescription = document.createElement('textarea');
 createTodoDescription.setAttribute('placeholder', 'More info');
 createTodoDescription.setAttribute('required', 'required');
+createTodoDescription.setAttribute('minlength', '3');
 createTodoDescription.setAttribute('id', 'description');
+
+createTodoDescription.addEventListener('input', (e) => {
+  const input = e.target;
+  const validityState = input.validity;
+
+  console.log(validityState);
+
+  if (validityState.valueMissing) {
+    input.setCustomValidity('A description is required');
+  } else if (validityState.tooShort) {
+    input.setCustomValidity('Please enter at least three characters, ideally a good description for this item');
+  } else {
+    input.setCustomValidity('');
+  }
+
+  input.reportValidity();
+});
 
 const createTodoPriority = document.createElement('input');
 createTodoPriority.setAttribute('type', 'number');
