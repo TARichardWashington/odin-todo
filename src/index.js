@@ -265,7 +265,7 @@ const createTodoButton = document.createElement('button');
 createTodoButton.innerText = 'Create';
 
 createTodoButton.addEventListener('click', () => {
-  if (createTodoTitle.value !== '') {
+  if (newTodoForm.checkValidity()) {
     const newToDo = new TodoItem(
       createTodoTitle.value,
       false,
