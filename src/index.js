@@ -245,6 +245,7 @@ createTodoDueDate.setAttribute('type', 'text');
 createTodoDueDate.setAttribute('id', 'dueDate');
 createTodoDueDate.setAttribute('required', 'required');
 createTodoDueDate.setAttribute('maxlength', '500');
+createTodoDueDate.setAttribute('pattern', '([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)[0-9]{4}');
 createTodoDueDate.setAttribute('placeholder', 'When do you need to do it by');
 
 const createTodoDescription = document.createElement('textarea');
