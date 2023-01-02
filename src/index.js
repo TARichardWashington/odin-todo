@@ -2,12 +2,11 @@ import './reset.css';
 import './styles.css';
 import ProjectsModel from './project-model';
 import TodoItem from './todo-item';
+import { createProjectTextDOM } from './dom';
 
 let projects;
 
-const createProjectText = document.createElement('input');
-createProjectText.setAttribute('type', 'text');
-createProjectText.setAttribute('placeholder', 'Name');
+const createProjectText = createProjectTextDOM();
 
 const listOfProjects = document.createElement('ul');
 
